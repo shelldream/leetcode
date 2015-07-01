@@ -1,8 +1,7 @@
 /*
-	Longest Substring Without Repeating Characters
+	ZigZag Conversion
 	Author:Xiaojun Huang
-	Date:2015-6-30
-	²Î¿¼ÍøÉÏ½â´ð£ºhttp://www.cnblogs.com/dollarzhaole/p/3155712.html
+	Date:2015-07-01
 */
 
 #include <iostream>
