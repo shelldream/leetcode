@@ -7,11 +7,13 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 class Solution {
 public:
     vector<vector<int> > combinationSum(vector<int>& candidates, int target) {
+        sort(candidates.begin(),candidates.end());
         return helper(candidates,target);
     }
     vector<vector<int> > helper(vector<int>& candidates, int target)
