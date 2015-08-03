@@ -31,7 +31,7 @@ public:
         {
             for(int i = index;i < candidates.size();i++)
             {
-                if(i == index || (i-1>= 0 && candidates[i] != candidates[i-1]))
+                if(i == index || (i-1>= index && candidates[i] != candidates[i-1]))
                 {
                     path.push_back(candidates[i]);
                     backtrace(candidates, target, ans, path, current_sum+candidates[i], i);
