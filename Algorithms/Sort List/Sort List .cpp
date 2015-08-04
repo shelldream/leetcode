@@ -144,11 +144,3 @@ int main()
     Solution solution;
     print_list(solution.sortList(L));
 }
-
-/*
-备注：
-采用归并排序
-1.
-
-
-*/
