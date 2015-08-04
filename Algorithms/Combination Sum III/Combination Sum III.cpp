@@ -25,9 +25,6 @@ public:
     void backtrace(vector<vector<int> >& ans, vector<int>& path, int sum, int k, int target, int index)
     {
 
-        //for(int m = 0;m < path.size();m++)
-        //    cout<<path[m]<<" ";
-        //cout<<endl;
         if(k < 0 || index > 9 || index > target || sum > target)
             return;
         if(sum == target && k == 0)
