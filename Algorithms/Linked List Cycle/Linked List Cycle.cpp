@@ -1,5 +1,5 @@
 /*
-	Linked List Cycle II
+	Linked List Cycle
 	Author:Xiaojun Huang
 	Date:2015-08-05
 */
