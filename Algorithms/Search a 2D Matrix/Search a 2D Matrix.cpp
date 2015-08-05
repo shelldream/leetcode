@@ -14,6 +14,8 @@ public:
         for(int i = 0;i < matrix.size();i++)
             head_element.push_back(matrix[i][0]);
         int index = Binary_Search_head(head_element,target);
+        if (index < 0)
+            return false;
         return Binary_Search(matrix[index],target);
     }
     bool Binary_Search(vector<int> nums,int target)
@@ -60,6 +62,6 @@ int main()
         matrix.push_back(tmp);
     }
     Solution solution;
-    cout<<solution.searchMatrix(matrix,3)<<endl;
+    cout<<solution.searchMatrix(matrix,1234560)<<endl;
 }
 
