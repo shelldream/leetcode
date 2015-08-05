@@ -14,10 +14,11 @@ struct ListNode {
     ListNode(int x) : val(x), next(NULL) {}
 };
 
-ListNode* create_cycle_list(vector<int> nums)
+ListNode* create_cycle_list(vector<int> nums, int n)
 {
     ListNode* head=NULL;
     ListNode* tail=NULL;
+    ListNode* tmp = NULL;
     for(int i = 0;i<nums.size();i++)
     {
         ListNode* p = new ListNode(nums[i]);
@@ -31,8 +32,10 @@ ListNode* create_cycle_list(vector<int> nums)
             tail->next = p;
             tail = tail->next;
         }
+        if(i == n)
+            tmp = p;
     }
-    tail->next = head;
+    tail->next = tmp;
     return head;
 }
 
@@ -59,34 +62,43 @@ ListNode* create_list(vector<int> nums)
 
 class Solution {
 public:
-    bool hasCycle(ListNode *head) {
+    ListNode *detectCycle(ListNode *head) {
         if(!head)
-            return false;
+            return NULL;
         ListNode* pre = head->next;
         ListNode* post = head;
         while(pre)
         {
             if(pre == post)
-                return true;
+                break;
             pre = pre->next;
             post = post->next;
             if(pre)
                 pre = pre->next;
-            else return false;
+            else return NULL;
         }
-        return false;
+        if(!pre)
+            return NULL;
+        post = head;
+        pre = pre->next;
+        while(pre != post)
+        {
+            pre = pre->next;
+            post = post->next;
+        }
+        return pre;
     }
 };
 
 
 int main()
 {
-    int data[] = {1,2,3,4,5};
+    int data[] = {0,1,2,3,4,5};
     int n = sizeof(data)/sizeof(data[0]);
     vector<int> nums(data,data+n);
     ListNode* L1 = create_list(nums);
-    ListNode* L2 = create_cycle_list(nums);
+    ListNode* L2 = create_cycle_list(nums,3);
     Solution solution;
-    cout<<solution.hasCycle(L1)<<endl;
-    cout<<solution.hasCycle(L2)<<endl;
+    cout<<(solution.detectCycle(L1)==NULL)<<endl;
+    cout<<solution.detectCycle(L2)->val<<endl;
 }
