@@ -60,7 +60,21 @@ ListNode* create_list(vector<int> nums)
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-
+        if(!head)
+            return false;
+        ListNode* pre = head->next;
+        ListNode* post = head;
+        while(pre)
+        {
+            if(pre == post)
+                return true;
+            pre = pre->next;
+            post = post->next;
+            if(pre)
+                pre = pre->next;
+            else return false;
+        }
+        return false;
     }
 };
 
@@ -71,6 +85,8 @@ int main()
     int n = sizeof(data)/sizeof(data[0]);
     vector<int> nums(data,data+n);
     ListNode* L1 = create_list(nums);
+    ListNode* L2 = create_cycle_list(nums);
     Solution solution;
-
+    cout<<solution.hasCycle(L1)<<endl;
+    cout<<solution.hasCycle(L2)<<endl;
 }
