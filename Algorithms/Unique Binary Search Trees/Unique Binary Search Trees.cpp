@@ -60,5 +60,5 @@ public:
 int main()
 {
     Solution solution;
-    cout<<solution.numTrees(19)<<endl;
+    cout<<solution.numTrees(3)<<endl;
 }
