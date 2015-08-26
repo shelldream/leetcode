@@ -12,37 +12,25 @@ using namespace std;
 class Solution {
 public:
     vector<vector<int> > combine(int n, int k) {
-        return helper(1, n ,k);
-    }
-
-    vector<vector<int> >helper(int start, int end, int num)
-    {
         vector<vector<int> > ans;
-        if(start > end || num==0)
-            return ans;
-        for(int i = start; i <= end-num+1; i++)
-        {
-            vector<vector<int> > next = helper(i+1, end, num-1);
-            if(next.size() == 0)
-            {
-                vector<int> tmp;
-                tmp.push_back(i);
-                ans.push_back(tmp);
-            }
-            for(int j = 0; j < next.size(); j++)
-            {
-                vector<int> tmp;
-                tmp.push_back(i);
-                for(int k = 0;k < next[j].size(); k++)
-                    tmp.push_back(next[j][k]);
-                ans.push_back(tmp);
-            }
-        }
+        vector<int> path;
+        backtrace(ans, path, 1, n,k);
         return ans;
     }
+    void backtrace(vector<vector<int> >& ans,vector<int>& path, int start, int n, int k)
+    {
+        if(k == 0)
+            ans.push_back(path);
+        else{
+            for(int i = start;i <= n;i++)
+            {
+                path.push_back(i);
+                backtrace(ans, path, i+1, n, k-1);
+                path.pop_back();
+            }
+        }
+    }
 };
-
-
 int main()
 {
     Solution solution;

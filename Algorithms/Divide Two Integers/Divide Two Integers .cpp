@@ -12,57 +12,46 @@ using namespace std;
 
 class Solution {
 public:
-    int divide(int divid, int divi) {
-        if (divi == 0)
+    int divide(long long dividend, long long divisor) {
+        if(divisor == 0)
             return INT_MAX;
-        long long dividend = divid;
-        long long divisor = divi;
+        bool isPositive;
+        if((dividend > 0 && divisor > 0) || (dividend < 0 && divisor < 0))
+            isPositive = true;
+        else isPositive = false;
+        long long l_dividend = (dividend > 0) ? dividend : -dividend;
+        long long l_divisor = (divisor > 0) ? divisor : -divisor;
         long long ans = 0;
-        bool ans_postive_flag = true;
-        if(dividend * divisor < 0)
-            ans_postive_flag = false;
-        if(dividend<0)
-            dividend = -dividend;
-        if(divisor<0)
-            divisor = -divisor;
-        while(dividend >= divisor)
+        while(l_dividend >= l_divisor)
         {
-            long long tmp = divisor;
-            long long tmp_count = 0;
-            while(dividend >= tmp)
+            long long tmp = l_divisor;
+            long long tmp_ans = 1;
+            while(tmp <= l_dividend)
             {
+                tmp_ans = tmp_ans<<1;
                 tmp = tmp<<1;
-                tmp_count++;
-                if(tmp<=0)
-                    break;
             }
-            ans += pow(2,tmp_count-1);
-            if(tmp<=0)
-                break;
-            dividend -= tmp>>1;
+            l_dividend -= tmp>>1;
+            ans += tmp_ans>>1;
         }
-        if(ans_postive_flag)
-            if (ans < INT_MAX)
-                return ans;
-            else return INT_MAX;
-        else
-            if (ans <= 2147483648)
-                return -ans;
-            else
-                return INT_MAX;
+        ans = isPositive ? ans : -ans;
+        if(ans >= INT_MAX)
+            return INT_MAX;
+        else if(ans <= INT_MIN)
+            return INT_MIN;
+        else return ans;
     }
 };
-
 int main()
 {
     Solution solution;
-    cout<<solution.divide(100,0)<<endl;
-    cout<<solution.divide(100,4)<<endl;
-    cout<<solution.divide(100,-4)<<endl;
-    cout<<solution.divide(10000000,1)<<endl;
-    cout<<solution.divide(214743234243328364832, 1)<<endl;
-    cout<<solution.divide(-2147483648, -2147483648)<<endl;
-    cout<<solution.divide(-2147483648, 1)<<endl;
+    //cout<<solution.divide(100,0)<<endl;
+    //cout<<solution.divide(100,4)<<endl;
+    //cout<<solution.divide(100,-4)<<endl;
+    //cout<<solution.divide(10000000,1)<<endl;
+    cout<<solution.divide(-1010369383, -2147483648)<<endl;
+    //cout<<solution.divide(-2147483648, -2147483648)<<endl;
+    //cout<<solution.divide(-2147483648, 1)<<endl;
 }
 
 /*หตร๗
