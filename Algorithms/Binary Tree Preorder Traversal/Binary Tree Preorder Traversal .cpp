@@ -41,7 +41,7 @@ TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
     }
 
 
-
+/**
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
@@ -60,6 +60,40 @@ public:
 private:
     vector<int> ans;
 };
+
+*/
+
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        TreeNode* p = root;
+        stack<TreeNode*> nodes;
+        while(p)
+        {
+            ans.push_back(p->val);
+            nodes.push(p);
+            p = p->left;
+        }
+        while(!nodes.empty())
+        {
+            TreeNode* top = nodes.top();
+            nodes.pop();
+            if(top->right)
+            {
+                TreeNode* top_right = top->right;
+                while(top_right)
+                {
+                    ans.push_back(top_right->val);
+                    nodes.push(top_right);
+                    top_right = top_right->left;
+                }
+            }
+        }
+        return ans;
+    }
+};
+
 
 int main()
 {
