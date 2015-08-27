@@ -40,8 +40,7 @@ TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
         return buildFunc(preorder, 0, j, inorder, 0, y);
     }
 
-
-
+/**
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
@@ -76,6 +75,42 @@ public:
 private:
     vector<int> ans;
 };
+*/
+
+class Solution {
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        TreeNode* p = root;
+        stack<TreeNode*> nodes;
+        while(p)
+        {
+            nodes.push(p);
+            p = p->left;
+        }
+        TreeNode* pre_ans = NULL; //上一次输出的指针，很关键！
+        while(!nodes.empty())
+        {
+            TreeNode* top = nodes.top();
+            if(top->right && top->right != pre_ans)
+            {
+                TreeNode* top_right = top->right;
+                while(top_right)
+                {
+                    nodes.push(top_right);
+                    top_right = top_right->left;
+                }
+            }
+            else
+            {
+                ans.push_back(top->val);
+                pre_ans = top;
+                nodes.pop();
+            }
+        }
+        return ans;
+    }
+};
 
 int main()
 {
@@ -87,7 +122,7 @@ int main()
     vector<int> inorder(data2, data2+n2);
     TreeNode* root = buildTree(preorder,inorder);
     Solution solution;
-    vector<int> ans = solution.postorderTraversal(root);
+    vector<int> ans = solution.postorderTraversal(root);//5 7 6 4 2 8 10 9 3 1
     for(int i = 0;i < ans.size();i ++)
         cout<<ans[i]<<" ";
 }
