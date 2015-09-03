@@ -11,8 +11,8 @@ using namespace std;
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        int s_len = s.size()-1;
-        int t_len = t.size()-1;
+        int s_len = s.size();
+        int t_len = t.size();
         if(s_len != t_len)
             return false;
         int s_map[26];
@@ -40,5 +40,5 @@ int main()
 {
     Solution solution;
     //cout<<solution.isAnagram("abcd", "badc")<<endl;
-    cout<<solution.isAnagram("abcd", "aadc")<<endl;
+    cout<<solution.isAnagram("a", "d")<<endl;
 }
