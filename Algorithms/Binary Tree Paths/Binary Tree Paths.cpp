@@ -116,7 +116,6 @@ int main()
     vector<int> inorder(data2, data2+n2);
     TreeNode* root = buildTree(preorder,inorder);
     Solution solution;
-    cout<<solution.int2str(-500)<<endl;
     vector<string> ans = solution.binaryTreePaths(root);
     for(int i = 0;i < ans.size();i++)
         cout<<ans[i]<<"  ";
