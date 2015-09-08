@@ -41,23 +41,16 @@ TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
 class Solution {
 public:
     bool hasPathSum(TreeNode* root, int sum) {
-        return traverse(root, sum);
-    }
-    bool traverse(TreeNode* root, int left_sum)
-    {
         if(!root)
-            if(left_sum != 0)
-                return false;
-            else
-                return true;
-        else
-        {
-            if(traverse(root->left, left_sum-root->val))
-                return true;
-            if(traverse(root->right, left_sum-root->val))
-                return true;
             return false;
-        }
+        sum -= root->val;
+        if(!root->left && !root->right && sum == 0)
+            return true;
+        if(root->left && hasPathSum(root->left, sum))
+            return true;
+        if(root->right && hasPathSum(root->right, sum))
+            return true;
+        return false;
     }
 };
 
