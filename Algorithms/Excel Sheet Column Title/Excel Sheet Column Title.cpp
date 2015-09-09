@@ -24,8 +24,6 @@ public:
         for(int i = 1;i <= 25;i++)
             int2char[i] = 'A' + i - 1;
         string ans = "";
-        if(n <= 26)
-            return ans+int2char[n%26];
         while(n)
         {
             int tmp = n%26;
@@ -41,5 +39,5 @@ public:
 int main()
 {
     Solution test;
-    cout<<test.convertToTitle(78)<<endl;
+    cout<<test.convertToTitle(2)<<endl;
 }
