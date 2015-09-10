@@ -12,12 +12,12 @@ using namespace std;
 class Solution {
 public:
     vector<int> getRow(int rowIndex) {
-        vector<int> ans(rowIndex, 0);
-        for(int i = 1;i <= rowIndex;i++)
+        vector<int> ans(rowIndex+1, 0);
+        for(int i = 0;i <= rowIndex;i++)
         {
-            for(int j = 0;j < i;j++)
+            for(int j = 0;j <= i;j++)
             {
-                if(j == 0 || j== i-1)
+                if(j == 0 || j== i)
                 {
                     ans[j] = 1;
                 }
@@ -37,11 +37,8 @@ public:
 int main()
 {
     Solution test;
-    for(int j = 1;j <= 10;j++)
-    {
-        vector<int> ans = test.getRow(j);
-        for(int i = 0;i < ans.size();i++)
-            cout<<ans[i]<<"  ";
-        cout<<endl;
-    }
+    vector<int> ans = test.getRow(4);
+    for(int i = 0;i < ans.size();i++)
+        cout<<ans[i]<<"  ";
+    cout<<endl;
 }
