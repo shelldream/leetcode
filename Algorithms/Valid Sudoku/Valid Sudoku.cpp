@@ -25,10 +25,7 @@ public:
         if(isRowValid(board) && isColumnValid(board))
             return true;
         else
-        {
-            cout<<"fdsadfsdf"<<endl;
             return false;
-        }
     }
     bool isRowValid(vector<vector<char> >&board)
     {
