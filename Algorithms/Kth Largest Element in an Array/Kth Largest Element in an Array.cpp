@@ -10,10 +10,13 @@
 #include <limits.h>
 using namespace std;
 
+
+
+/** 建立小顶堆，最后取堆顶元素，即为第k大的元素
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
-        vector<int> heap;//����С����
+        vector<int> heap;
         heap.push_back(0);
         int heap_cap = 0;
         for(int i = 0;i < nums.size();i++)
@@ -70,11 +73,52 @@ public:
     }
 };
 
+*/
+
+/**快排Partition函数的应用*/
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        int index = -1;
+        int i = 0;
+        int j = nums.size()-1;
+        while(index != k-1)
+        {
+            int index = Patition(nums, i, j);
+            if(index == k-1)
+                return nums[index];
+            else if(index > k-1)
+            {
+                j = index;
+            }
+            else
+            {
+                i = index;
+            }
+        }
+    }
+    int Patition(vector<int>& nums, int low, int high)
+    {
+        int privot_key = nums[low];
+        while(low < high)
+        {
+            while(low < high && nums[high] >= privot_key)
+                high--;
+            nums[low] = nums[high];
+            while(low < high && nums[low] <= privot_key)
+                low++;
+            nums[high] = nums[low];
+        }
+        nums[low] = privot_key;
+        return low;
+    }
+};
+
 int main()
 {
     int test[] = {10, 2, 3, 1, 6, 8, 4, 5, 9, 7};
     int n = sizeof(test)/sizeof(test[0]);
     vector<int> nums(test,test+n);
     Solution solution;
-    cout<<solution.findKthLargest(nums,10)<<endl;
+    cout<<solution.findKthLargest(nums,7)<<endl;
 }
