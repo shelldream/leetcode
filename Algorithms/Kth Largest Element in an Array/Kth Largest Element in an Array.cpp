@@ -89,11 +89,11 @@ public:
                 return nums[index];
             else if(index > k-1)
             {
-                j = index;
+                j = index-1;
             }
             else
             {
-                i = index;
+                i = index+1;
             }
         }
     }
@@ -102,10 +102,10 @@ public:
         int privot_key = nums[low];
         while(low < high)
         {
-            while(low < high && nums[high] >= privot_key)
+            while(low < high && nums[high] <= privot_key)
                 high--;
             nums[low] = nums[high];
-            while(low < high && nums[low] <= privot_key)
+            while(low < high && nums[low] >= privot_key)
                 low++;
             nums[high] = nums[low];
         }
@@ -116,9 +116,10 @@ public:
 
 int main()
 {
-    int test[] = {10, 2, 3, 1, 6, 8, 4, 5, 9, 7};
+    //int test[] = {10, 2, 3, 1, 6, 8, 4, 5, 9, 7};
+    int test[] = {2,1};
     int n = sizeof(test)/sizeof(test[0]);
     vector<int> nums(test,test+n);
     Solution solution;
-    cout<<solution.findKthLargest(nums,7)<<endl;
+    cout<<solution.findKthLargest(nums,1)<<endl;
 }
