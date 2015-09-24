@@ -38,7 +38,7 @@ public:
 
 int main()
 {
-    int data[] = {1,2,3};
+    int data[] = {1,2,3,4,5};
     int n = sizeof(data)/sizeof(data[0]);
     vector<int> nums(data,data+n);
     Solution solution;
