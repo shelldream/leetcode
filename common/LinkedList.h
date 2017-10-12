@@ -1,9 +1,9 @@
 /*
- *  基本的数据结构定义
+ *  链表数据结构定义
  */
 
-#ifndef BASIC_H_
-#define BASIC_H_
+#ifndef LINKED_LIST_H_
+#define LINKED_LIST_H_
 
 #include <iostream>
 #include <vector>
