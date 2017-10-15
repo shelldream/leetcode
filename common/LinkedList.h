@@ -65,19 +65,23 @@ public:
    
     SingleLinkedList(int *data, int n)
     {
-        _head = NULL;
         ListNode *tail = NULL;
         for (size_t i = 0; i < n; ++i)
         {
             ListNode *tmp = new ListNode(*(data+i));
-            if (0 == i)
+            
+            if (NULL == tail)
+            {
                 _head = tmp;
-            if (tail != NULL)
+            }
+            else
             {
                 tail->next = tmp;
             }
+            
             tail = tmp;
         }
+
     }
     
     ~SingleLinkedList()
@@ -90,7 +94,7 @@ public:
         return _head;
     }
     
-    void printList()
+    void printList() 
     {
         ListNode *tmp = _head;
         while (tmp)
