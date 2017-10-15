@@ -1,9 +1,9 @@
 /*
-	Description: 
+    Description: 
         Minimum Window Substring  
         https://leetcode.com/problems/minimum-window-substring/description/
     Author: shelldream
-	Date: 2017-10-12
+    Date: 2017-10-12
 */
 
 #include <iostream>
