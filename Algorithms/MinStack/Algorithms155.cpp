@@ -1,8 +1,9 @@
 /*
-	Min Stack
-	Author:Xiaojun Huang
-	Date:2015-08-31
-
+	Description:
+        Min Stack
+        https://leetcode.com/problems/min-stack/description/
+    Author: shelldream
+	Date:2017-10-29
 */
 
 #include <iostream>
