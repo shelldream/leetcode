@@ -1,7 +1,9 @@
 /*
-	String to Integer (atoi)
-	Author:Xiaojun Huang
-	Date:2015-07-08
+	Description:
+        String to Integer (atoi)
+	    https://leetcode.com/problems/string-to-integer-atoi/description/
+    Author: shelldream
+	Date:2017-10-29
 */
 #include <iostream>
 #include <limits.h>
@@ -54,10 +56,4 @@ int main()
     cout<<solution.myAtoi("-2147483648")<<endl;//-2147483648
 }
 
-/*
-备注：
-1.注意溢出问题（上溢出和下溢出不同）
-2.正负号问题
-3.开头的空格
-4.中间的非数字字符
-*/
+
