@@ -1,9 +1,9 @@
 /*
-	Description:
+    Description:
         Permutations
         https://leetcode.com/problems/permutations/description/
-    Author: shelldream
-	Date:2017-10-31
+        Author: shelldream
+    Date:2017-10-31
 */
 #include <iostream>
 #include <vector>
@@ -23,7 +23,10 @@ public:
     void backtrace(vector<vector<int> >& ans, vector<int>&path, vector<int>& nums, set<int>& not_visited)
     {
         if (not_visited.empty())
+        {    
             ans.push_back(path);
+            return;
+        }
 
         for (size_t i = 0; i < nums.size(); ++i)
         {
