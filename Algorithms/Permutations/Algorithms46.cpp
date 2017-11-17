@@ -2,7 +2,7 @@
     Description:
         Permutations
         https://leetcode.com/problems/permutations/description/
-        Author: shelldream
+    Author: shelldream
     Date:2017-10-31
 */
 #include <iostream>
